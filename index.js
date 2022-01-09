@@ -1,27 +1,20 @@
-function searchUser(){
-    let userName = document.getElementById("searchinput").value;
-    console.log(userName);
-    let url = `https://api.github.com/users/${userName}/repos`;
-    fetch(url)
-      .then((res)=>{
-          return res.json();
-      })
-      .then((data)=>{
-          console.log(data);
-          let userInfo = data;
-
-          
-
-
-          // create element
-          const container = document.createElement('div');
-          const row = document.createElement('div');
-          //const row2 = document.createElement('div');
-          container.setAttribute("class", "container");
-          //row.append(row2);
-          container.append(row);
-          //row.append(row2);
-          row.innerHTML += `
+function searchUser() {
+  let userName = document.getElementById("searchinput").value;
+// calling api to get user details
+  let url = `https://api.github.com/users/${userName}/repos`;
+  fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      let userInfo = data;
+      // create element div 
+      const container = document.createElement("div");
+      const row = document.createElement("div");
+      container.setAttribute("class", "container");
+      container.append(row);
+      // adding user details to the div
+      row.innerHTML += `
           <div class="row1">
             <div class="row2">
                 <img src="${userInfo[0].owner.avatar_url}" alt="${userInfo[0].owner.login}" width="120px" height="120px" class="avatar">
@@ -33,11 +26,10 @@ function searchUser(){
             <h3>${userInfo[0].owner.login}'s repos collection</h3>
             
           </div>
-          
-          `
-           userInfo.forEach((data)=>{
-            //console.log(data.name);
-            row.innerHTML += `
+           `;
+    // getting user repos and adding it to div
+      userInfo.forEach((data) => {
+        row.innerHTML += `
             <div class="row3">
                   <div class="row4">
                   <img src="./images/folder.png" alt="folder" width="10px" height="10px">
@@ -49,19 +41,9 @@ function searchUser(){
                   <div class="count"> Stars: ${data.stargazers_count}</div>
                   
                   </div>
-                 
-            
-            </div>
-              
-            `
-        })
-
-        document.getElementById("searchBar").append(container);
-
-
-
-      })
-    
+             </div>
+              `;
+      });
+      document.getElementById("searchBar").append(container);
+    });
 }
-
-               //<td><img src="./images/folder.png" alt="folder" width="10px" height="10px"></td>
