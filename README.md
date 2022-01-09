@@ -9,8 +9,8 @@ The app will also allow user to click the repo link and check the user repos.
 * HTML
 * CSS
 * JS
-* Github API (https://api.github.com/users/${userName}/repos)["https://api.github.com/users/${userName}/repos"]
+* Github API [https://api.github.com/users/${userName}/repos](https://api.github.com/users/${userName}/repos)
 
 ### Demo Link
 
-(Link)[https://github-user-reposcollection.netlify.app/]
+[Link](https://github-user-reposcollection.netlify.app/)
